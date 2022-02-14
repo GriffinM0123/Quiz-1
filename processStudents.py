@@ -34,29 +34,37 @@ outfile = open("processedStudents.csv")
 
 # skip the header row
 
+student_file = csv.reader(students, delimiter=",")
 
 # create an outfile object for the pocessed record
-
+next(student_file)
 
 # create a new dictionary named 'student_dict'
 
+student_dict = {}
 
 # use a loop to iterate through each row of the file
 
-# check if the GPA is below 3.0. If so, write the record to the outfile
+for student in student_file:
 
+    # check if the GPA is below 3.0. If so, write the record to the outfile
+     gpa = float(student[8])
+     if gpa < 3.0:
+       outfile.write(student)
 
-# append the record to the dictionary with the student id as the Key
-# and the value as the GPA
+    # append the record to the dictionary with the student id as the Key
+    # and the value as the GPA
+    student_dict[student[0]] = student[8]
 
-
-# print the entire dictionary
-
+    # print the entire dictionary
+    print(student_dict)
 
 # Print the student id
-
+print("567890123")
+print(student_dict["567890123"])
 
 # print out the corresponding GPA from the dictionary
-
+# Above
 
 # close the outfile
+outfile.close()
